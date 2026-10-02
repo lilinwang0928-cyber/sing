@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夜間對話 · 37 分鐘音樂分享會｜演出流程表（B 版）</title>
+<style>
+:root{
+  --night:#0c0912;
+  --night-2:#151022;
+  --plum:#241a36;
+  --plum-2:#31244a;
+  --amber:#e8a33d;
+  --amber-lt:#f7d18d;
+  --moon:#8fa9d4;
+  --rose:#cd6f8f;
+  --mint:#7fc4a8;
+  --paper:#f6f1e8;
+  --paper-2:#e6dece;
+  --muted:rgba(246,241,232,.58);
+  --line:rgba(246,241,232,.16);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Noto Serif CJK TC","Songti TC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans CJK TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--sans);color:var(--paper);line-height:1.72;
+  background:
+    radial-gradient(900px 500px at 78% -8%, rgba(232,163,61,.16) 0%, rgba(232,163,61,0) 60%),
+    radial-gradient(800px 520px at 10% 22%, rgba(143,169,212,.12) 0%, rgba(143,169,212,0) 62%),
+    linear-gradient(180deg, var(--night-2) 0%, var(--night) 46%, #07050c 100%);
+  background-attachment:fixed;
+}
+
+/* ---------- hero ---------- */
+header.hero{padding:38px 18px 8px;text-align:center;max-width:960px;margin:0 auto}
+.kicker{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--amber);margin:0 0 14px;
+}
+h1{
+  font-family:var(--serif);font-weight:400;letter-spacing:.04em;
+  font-size:clamp(2.1rem,9vw,3.6rem);line-height:1.08;margin:0 0 10px;
+}
+h1 em{font-style:italic;color:var(--amber-lt)}
+.tagline{
+  font-family:var(--serif);font-size:clamp(.95rem,3.6vw,1.2rem);
+  color:var(--paper-2);margin:0 auto 18px;max-width:30em;
+}
+.facts{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin:0 0 6px}
+.fact{padding:0 clamp(10px,4vw,26px);text-align:center;border-right:1px solid var(--line)}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-family:var(--mono);font-size:clamp(1.3rem,5.4vw,1.9rem);color:var(--amber-lt);line-height:1.2}
+.fact span{display:block;font-size:.7rem;color:var(--muted);letter-spacing:.16em}
+
+/* ---------- arc ---------- */
+.arcwrap{max-width:960px;margin:22px auto 0;padding:0 10px}
+.arc-title{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.26em;color:var(--muted);
+  text-transform:uppercase;text-align:center;margin:0 0 4px;
+}
+svg.arc{width:100%;height:auto;display:block;overflow:visible}
+svg.arc .node{cursor:pointer}
+svg.arc .node circle.hit{fill:transparent}
+svg.arc .dot{transition:r .25s, fill .25s}
+svg.arc .node:hover .dot,svg.arc .node.live .dot{r:11;fill:var(--amber-lt)}
+svg.arc text{font-family:var(--sans);fill:var(--paper-2)}
+svg.arc .lbl{font-size:12px}
+svg.arc .stage{font-size:10.5px;fill:var(--amber);letter-spacing:.14em}
+#marker{opacity:0;transition:opacity .3s}
+#marker.on{opacity:1}
+
+/* ---------- timer ---------- */
+.timer{
+  position:sticky;top:0;z-index:50;margin:20px auto 0;max-width:960px;
+  background:rgba(12,9,18,.9);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:11px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.clock{font-family:var(--mono);font-size:1.5rem;color:var(--amber-lt);line-height:1;min-width:5.2em}
+.tinfo{font-size:.8rem;color:var(--muted);flex:1 1 180px;min-width:150px}
+.tinfo b{color:var(--paper);font-weight:600}
+.tinfo.over b,.tinfo.over{color:var(--rose)}
+.tbar{width:100%;height:5px;border-radius:4px;background:rgba(246,241,232,.12);overflow:hidden;margin-top:2px}
+.tbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--moon),var(--amber));transition:width .4s linear}
+.btn{
+  font-family:var(--sans);font-size:.8rem;font-weight:700;cursor:pointer;
+  border:0;border-radius:8px;padding:7px 15px;background:var(--amber);color:#2b1b03;
+}
+.btn:hover{background:var(--amber-lt)}
+.btn.ghost{background:transparent;color:var(--paper-2);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--amber);color:var(--amber-lt)}
+.btn.link{
+  background:transparent;color:var(--moon);border:1px solid var(--line);
+  text-decoration:none;display:inline-block;line-height:1.5;
+}
+.btn.link:hover{border-color:var(--moon);color:var(--paper)}
+.urltext{
+  margin:8px 0 0;font-family:var(--mono);font-size:.72rem;
+  color:var(--muted);word-break:break-all;user-select:all;
+}
+.urltext a{color:var(--moon);text-decoration:none}
+.urltext a:hover{text-decoration:underline}
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  background:var(--amber);color:#2b1b03;font-size:.82rem;font-weight:700;
+  padding:9px 18px;border-radius:999px;z-index:200;opacity:0;
+  pointer-events:none;transition:opacity .25s;
+}
+.toast.on{opacity:1}
+
+/* ---------- cards ---------- */
+main{max-width:960px;margin:0 auto;padding:26px 16px 80px}
+.song{
+  background:linear-gradient(180deg, rgba(49,36,74,.72), rgba(20,15,33,.72));
+  border:1px solid var(--line);border-left:4px solid var(--moon);
+  border-radius:16px;padding:18px 18px 20px;margin-bottom:16px;
+  scroll-margin-top:96px;
+}
+.song.live{border-left-color:var(--amber);box-shadow:0 0 0 1px rgba(232,163,61,.4), 0 10px 40px rgba(232,163,61,.12)}
+.s-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:2px}
+.s-no{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;color:#2b1b03;
+  background:var(--moon);border-radius:5px;padding:2px 9px;
+}
+.song.live .s-no{background:var(--amber)}
+.s-stage{font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;color:var(--amber)}
+.s-clock{margin-left:auto;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+h2.s-title{
+  font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,5.6vw,1.85rem);
+  margin:4px 0 4px;line-height:1.24;
+}
+.s-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.chip{
+  font-size:.7rem;letter-spacing:.06em;padding:2px 10px;border-radius:999px;
+  border:1px solid var(--line);color:var(--paper-2);
+}
+.chip.lang-en{border-color:var(--moon);color:var(--moon)}
+.chip.lang-zh{border-color:var(--rose);color:var(--rose)}
+.chip.lang-tw{border-color:var(--mint);color:var(--mint)}
+.chip.lang-fr{border-color:#e0937b;color:#e0937b}
+.song.encore{
+  border-left-style:dashed;border-left-color:#e0937b;
+  background:linear-gradient(180deg, rgba(224,147,123,.14), rgba(20,15,33,.72));
+}
+.song.encore .s-no{background:#e0937b}
+.song.encore .s-stage{color:#e0937b}
+.s-mood{font-size:.87rem;color:var(--paper-2);margin:0 0 12px}
+
+.script{
+  background:var(--paper);color:#1a1424;border-radius:12px;
+  padding:14px 16px;margin:0 0 12px;
+}
+.script .lab{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:#7a5a1e;
+  text-transform:uppercase;margin:0 0 6px;display:flex;align-items:center;gap:8px;
+}
+.script .lab::after{content:"";flex:1;height:1px;background:var(--paper-2)}
+.script p{font-family:var(--serif);font-size:.99rem;line-height:1.85;margin:0}
+
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:620px){.dual{grid-template-columns:1fr}}
+.mini{
+  border:1px solid var(--line);border-radius:11px;padding:11px 13px;
+  background:rgba(246,241,232,.045);
+}
+.mini h3{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--amber);
+  text-transform:uppercase;margin:0 0 6px;font-weight:600;
+}
+.mini p,.mini li{font-size:.82rem;color:var(--paper-2);margin:0 0 5px}
+.mini ul{margin:0;padding-left:1.1em}
+.mini a{color:var(--amber-lt);text-decoration:none;border-bottom:1px solid rgba(247,209,141,.4)}
+.mini a:hover{border-bottom-color:var(--amber-lt)}
+.acts{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+
+/* ---------- checklist ---------- */
+.panel{
+  border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:26px;
+  background:rgba(246,241,232,.04);
+}
+.panel h2{
+  font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:0 0 4px;
+}
+.panel .hint{font-size:.8rem;color:var(--muted);margin:0 0 14px}
+.check{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.87rem}
+.check:last-child{border-bottom:0}
+.check input{width:19px;height:19px;margin-top:2px;accent-color:var(--amber);flex:0 0 auto}
+.check.done label{color:var(--muted);text-decoration:line-through}
+.langbar{display:flex;height:26px;border-radius:7px;overflow:hidden;margin:10px 0 8px}
+.langbar span{display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#120d1c;font-weight:700}
+
+/* ---------- 提詞卡 ---------- */
+.cue{
+  position:fixed;inset:0;z-index:100;display:none;
+  background:#07050c;padding:18px;
+  flex-direction:column;
+}
+.cue.on{display:flex}
+.cue-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px}
+.cue-title{font-family:var(--serif);font-size:1.1rem;color:var(--amber-lt);flex:1 1 auto}
+.cue-body{
+  flex:1 1 auto;overflow-y:auto;display:flex;align-items:center;
+  padding:20px 4px;-webkit-overflow-scrolling:touch;
+}
+.cue-body p{
+  font-family:var(--serif);line-height:1.95;margin:0;
+  font-size:var(--cue-size,1.5rem);color:var(--paper);
+}
+.cue-foot{display:flex;gap:8px;align-items:center;border-top:1px solid var(--line);padding-top:10px;flex-wrap:wrap}
+.cue-foot .pos{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-left:auto}
+
+footer{text-align:center;padding:22px 18px 44px;font-size:.72rem;color:rgba(246,241,232,.4);border-top:1px solid var(--line)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- print ---------- */
+@media print{
+  body{background:#fff;color:#000}
+  .timer,.arcwrap,.acts,.cue,.panel button,footer{display:none!important}
+  .song{background:#fff;border:1px solid #999;border-left:4px solid #333;page-break-inside:avoid;color:#000}
+  .s-stage,.s-clock,.s-mood,.mini p,.mini li,.chip{color:#333!important}
+  .mini{background:#fff;border-color:#bbb}
+  .acts{display:none!important}
+  .urltext,.urltext a{color:#444!important;font-size:.68rem}
+  .mini h3{color:#000}
+  h1,.tagline,.fact b,.fact span{color:#000}
+  .script{border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">Setlist · Run Sheet · 40 min</p>
+  <h1>夜間<em>對話</em></h1>
+  <p class="tagline">五首歌加一首安可，四種語言。從世界的頂端出發，走回一個人心裡的平靜，<br>最後一起走上一條曬著太陽的大街。</p>
+  <div class="facts">
+    <div class="fact"><b>37</b><span>分鐘</span></div>
+    <div class="fact"><b>5+1</b><span>首曲目</span></div>
+    <div class="fact"><b>4</b><span>種語言</span></div>
+    <div class="fact"><b>6</b><span>段引言</span></div>
+  </div>
+</header>
+
+<div class="arcwrap">
+  <p class="arc-title">情緒曲線 — 點任一站可跳到該曲</p>
+  <svg class="arc" id="arc" viewBox="0 0 700 230" preserveAspectRatio="xMidYMid meet" role="img" aria-label="六首曲目的情緒起伏曲線"></svg>
+</div>
+
+<div class="timer">
+  <span class="clock" id="clock">00:00</span>
+  <button class="btn" id="startBtn">開始演出</button>
+  <button class="btn ghost" id="resetBtn">歸零</button>
+  <div class="tinfo" id="tinfo">尚未開始。按「開始演出」後，會依流程表推算目前應該在第幾首。
+    <span class="tbar"><i id="tbar"></i></span>
+  </div>
+</div>
+
+<main>
+  <div id="songs"></div>
+
+  <section class="panel">
+    <h2>語言配置</h2>
+    <p class="hint">四種語言的比重與落點——英語鋪陳、國語推進、台語收束。</p>
+    <div class="langbar" id="langbar"></div>
+    <p style="font-size:.82rem;color:var(--paper-2);margin:0">
+      英語鋪陳前段（1、2、4），國語放在第三首製造唯一一次強共鳴，台語放在正式結尾——最熟悉的語言，說最安定的話。安可曲的法語是意外的第四種語言：正式流程已經收乾淨，這時再推開一扇門，把大家笑著送出去。
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>上台前檢查</h2>
+    <p class="hint">勾選狀態會存在這台裝置上，關掉頁面也還在。</p>
+    <div id="checklist"></div>
+    <button class="btn ghost" id="clearCheck" style="margin-top:12px">全部重設</button>
+  </section>
+</main>
+
+<div class="cue" id="cue" role="dialog" aria-modal="true" aria-label="提詞卡">
+  <div class="cue-head">
+    <span class="cue-title" id="cueTitle"></span>
+    <button class="btn ghost" id="cueSmaller" aria-label="縮小字級">A−</button>
+    <button class="btn ghost" id="cueBigger" aria-label="放大字級">A＋</button>
+    <button class="btn" id="cueClose">關閉</button>
+  </div>
+  <div class="cue-body"><p id="cueText"></p></div>
+  <div class="cue-foot">
+    <button class="btn ghost" id="cuePrev">← 上一首</button>
+    <button class="btn ghost" id="cueNext">下一首 →</button>
+    <span class="pos" id="cuePos"></span>
+  </div>
+</div>
+
+<footer>
+  演出總覽 · 單檔離線可用 · 可直接列印成流程表（Ctrl / ⌘ + P）
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- 安全 localStorage ---------- */
+var LS = (function(){
+  try{ var k="__t"; localStorage.setItem(k,"1"); localStorage.removeItem(k); return localStorage; }
+  catch(e){ var m={}; return {getItem:function(a){return m[a]===undefined?null:m[a];},
+    setItem:function(a,b){m[a]=String(b);}, removeItem:function(a){delete m[a];}}; }
+})();
+
+/* ---------- 曲目資料 ---------- */
+var SONGS = [
+{
+  stage:"開場", title:"Top of the World", url:"https://youtu.be/TqxGfNcuiJU", lang:"英語", langKey:"en", mins:6, tension:55,
+  mood:"破冰暖場。用輕快明亮的節奏拉近與聽眾的距離。",
+  script:"大家晚安。很高興今晚能與你們相聚。我們常說，音樂和語言一樣，能塑造我們看世界的角度。今晚的第一首歌，我想帶大家回到一個最純粹、最充滿希望的視角。當我們心中充滿愛與感激時，彷彿就站在世界的頂端。讓我們用這首輕快的《Top of the World》，為今晚的旅程拉開序幕。",
+  file:["The Carpenters，1972 年收錄於《A Song for You》，1973 年成為告示牌冠軍單曲。","詞曲：Richard Carpenter／John Bettis。鄉村流行風，搖擺的中板。"],
+  sing:["中音域為主，咬字要輕巧，不要唱得太用力。","節奏容易愈唱愈快，前奏就先把速度定住。","開場笑容比音準重要——這首的任務是暖場。"]
+},
+{
+  stage:"銜接", title:"Big Big World", url:"https://youtu.be/tkH8Bzqnszc", lang:"英語", langKey:"en", mins:6, tension:40,
+  mood:"節奏放緩，引導聽眾進入較為細膩、個人的內心世界。",
+  script:"當我們站在世界頂端時，一切都很美好；但有時候，當我們獨自面對這個廣闊的世界，難免會感到自己的渺小。《Big Big World》是一首旋律很簡單，卻非常真實的歌。它唱出了一種即使感到孤單，也要努力學會堅強的純粹。送給每一個在這個大世界裡，勇敢邁出步伐的你。",
+  file:["瑞典歌手 Emilia（Emilia Rydberg），1998 年，紅遍歐洲。","旋律音域窄、結構簡單，是全場最「素」的一首。"],
+  sing:["刻意收力。用氣聲與弱唱表現孤單，比放聲唱更對味。","咬字放輕，尾音不要抖太多，保持乾淨。","與第一首形成對比——這裡開始把聽眾往內帶。"]
+},
+{
+  stage:"轉折", title:"飄洋過海來看你", url:"https://youtu.be/lhPMKfVj49w", lang:"國語", langKey:"zh", mins:7, tension:65,
+  mood:"情感加深。以敘事性強的華語金曲引起強烈共鳴。",
+  script:"有了勇敢，我們就能跨越距離。接下來這首國語歌，說的是一種為了見某個人一面，不惜跨越千山萬水、耗盡所有積蓄的執著。文字的重量在這首歌裡展露無遺，每一句歌詞都像是在訴說一段深刻的故事。這首《飄洋過海來看你》，與你們分享那份為愛奮不顧身的勇氣。",
+  file:["李宗盛 詞曲，娃娃（金智娟）原唱，1991 年。","全場第一首中文歌，也是第一個情緒高點。"],
+  sing:["這是「說」出來的歌，敘事咬字比漂亮的音色重要。","長句多，斷句與換氣位置要事先標好。","這是正式流程裡張力最強的一首，副歌可以推到滿。"]
+},
+{
+  stage:"沉澱", title:"Scarborough Fair", url:"https://youtu.be/4Ccgk8PXz64", lang:"英語", langKey:"en", mins:6, tension:30,
+  mood:"氣氛轉為靜謐空靈，讓聽眾在綿長的呼吸與連音中放鬆。",
+  script:"經歷了情感的波折與距離的考驗，我想邀請大家稍微沉澱下來。接下來這首英國傳統民謠，旋律非常優美綿長，演唱時需要平穩的氣息與流暢的連音。歌詞裡不斷重複著芫荽、鼠尾草、迷迭香與百里香，這些香草其實象徵著安慰、力量與勇氣。請跟著這首《Scarborough Fair》的節奏，放慢呼吸，享受這份靜謐。",
+  file:["英格蘭傳統民謠（Child Ballad 2），源頭可追到十七世紀。","1966 年 Simon & Garfunkel 與〈Canticle〉疊成對位二重唱後風行全球。"],
+  sing:["全場最低張力點。3/4 拍搖曳，連音（legato）要連得住。","四種香草的咬字要清楚：thyme 唸 /taɪm/，h 不發音，與 time 同音。","這首和下一首都偏靜，連著兩首低張力。要靠音色做出區隔：這首空靈，下一首溫暖。"]
+},
+{
+  stage:"結尾", title:"有人在替你祈禱", url:"https://youtu.be/xxiaJZIX2i0", lang:"台語", langKey:"tw", mins:7, tension:60,
+  mood:"溫暖收束。以安定人心的母語帶來祝福與平靜。",
+  script:"今晚我們用不同的語言，唱了世界的廣闊、愛情的執著，也唱了一首走了幾百年的古老歌謠。在即將結束的這一刻，我想用我們最熟悉的台語，為大家帶來一份最安定的力量。無論你明天將面對什麼挑戰，請記得，總會有一個人在看不見的地方，默默為你祝福、為你加油。最後一首歌，《有人在替你祈禱》，謝謝大家今晚的聆聽，祝你們有個平靜美好的夜晚。",
+  file:["台語詩歌，譯自英文聖詩〈Someone Is Praying for You〉。","台語版由史茵茵演唱，2009 年風潮唱片發行。"],
+  sing:["台語咬字與聲調先過一遍，尤其入聲字的收尾。","不要唱成表演，唱成「說話」——這首的力量在安定，不在技巧。","結束後留三秒不說話再道謝。安可是全場最亮的一首，情緒要在掌聲裡翻上去。"]
+},
+{
+  stage:"安可", encore:true, title:"香榭麗舍 Les Champs-Élysées", url:"https://youtu.be/yZRKahuIY7c", lang:"法語", langKey:"fr", mins:5, tension:85,
+  mood:"亮起來的句點。在祈禱的安定之後推開一扇門，用輕快的法語把整晚的情緒往上帶，笑著散場。",
+  script:"（微笑等待掌聲漸息）謝謝大家。剛才我們在台語的祈禱裡，找到了內心的安定。而祈禱之後，人總是要再走出去的。\n\n所以最後，我想帶大家換一個場景——從一個安靜的房間，走到巴黎一條曬著太陽的大街上。這首歌講的其實是一件很小的事：一個人走在路上，心情很好，好到想跟任何一個擦身而過的陌生人說聲你好。結果真的就這樣，遇見了一個人。\n\n這首《香榭麗舍》，送給今晚在座的每一位。副歌很好記，如果你聽著想跟著哼、想拍手，請不要客氣。願大家步出這扇門之後，日子都像那條大街一樣，有陽光，也有好事發生。",
+  file:["Joe Dassin 演唱，1969 年 5 月發行單曲，光在法國就賣出 60 萬張。","改編自英國樂團 Jason Crest 1968 年的〈Waterloo Road〉（Mike Deighan、Mike Wilsh 作曲）。英文原曲沒紅，換上 Pierre Delanoë 的法文詞之後，卻成了法國香頌的代表作。","原曲僅 2 分 40 秒，搖擺的三連音節奏，副歌一聽就能跟著唱。"],
+  sing:["全場唯一的法語曲，補上第四種語言，也是整晚最亮的一首。","節奏是搖擺的三連音，不要唱成平均的四分音符，否則會變成進行曲。","鼻母音（-an／-on／-in）先單獨練；aux Champs-Élysées 的連音是整首的招牌，務必標出來。","原曲僅 2 分 40 秒，五分鐘要靠引言、重複副歌或邀聽眾合唱來填——事先決定走哪一種。","副歌可以帶拍手。手勢怎麼做、在哪一句開口邀請，先想好，別臨場猶豫。"]
+}
+];
+
+/* ---------- 累計時間 ---------- */
+var starts=[], cum=0, i;
+for(i=0;i<SONGS.length;i++){ starts.push(cum); cum += SONGS[i].mins; }
+var TOTAL = cum; // 40
+
+function mmss(sec){
+  var s = Math.max(0, Math.floor(sec));
+  var m = Math.floor(s/60), r = s%60;
+  return (m<10?"0":"")+m+":"+(r<10?"0":"")+r;
+}
+var LANGCLASS = {en:"lang-en", zh:"lang-zh", tw:"lang-tw", fr:"lang-fr"};
+var LANGCOLOR = {en:"#8fa9d4", zh:"#cd6f8f", tw:"#7fc4a8", fr:"#e0937b"};
+
+/* ---------- 曲目卡 ---------- */
+(function render(){
+  var h="", k, s;
+  for(k=0;k<SONGS.length;k++){
+    s = SONGS[k];
+    h += '<article class="song'+(s.encore?" encore":"")+'" id="song-'+k+'" data-k="'+k+'">';
+    h += '<div class="s-top"><span class="s-no">'+(s.encore?"EC":(k+1))+'</span>';
+    h += '<span class="s-stage">'+s.stage+'</span>';
+    h += '<span class="s-clock">'+mmss(starts[k]*60)+' – '+mmss((starts[k]+s.mins)*60)+'　共 '+s.mins+' 分</span></div>';
+    h += '<h2 class="s-title">'+s.title+'</h2>';
+    h += '<div class="s-meta"><span class="chip '+LANGCLASS[s.langKey]+'">'+s.lang+'</span>';
+    h += '<span class="chip">階段：'+s.stage+'</span>';
+    h += '<span class="chip">張力 '+s.tension+'／100</span></div>';
+    h += '<p class="s-mood">'+s.mood+'</p>';
+    h += '<div class="script"><p class="lab">引言</p><p>'+s.script.replace(/\n\n/g,'<br><br>')+'</p></div>';
+    h += '<div class="dual"><div class="mini"><h3>曲目小檔案</h3><ul>';
+    for(i=0;i<s.file.length;i++){ h += '<li>'+s.file[i]+'</li>'; }
+    h += '</ul></div><div class="mini"><h3>演唱備忘</h3><ul>';
+    for(i=0;i<s.sing.length;i++){ h += '<li>'+s.sing[i]+'</li>'; }
+    h += '</ul></div></div>';
+    h += '<div class="acts"><button class="btn" data-cue="'+k+'">開啟提詞卡</button>';
+    if(s.url){
+      h += '<a class="btn link" href="'+s.url+'" target="_blank" rel="noopener" data-url="'+s.url+'">參考版本 ↗</a>';
+      h += '<button class="btn ghost" data-copy="'+s.url+'">複製網址</button>';
+    }
+    h += '</div>';
+    if(s.url){ h += '<p class="urltext"><a href="'+s.url+'" target="_blank" rel="noopener">'+s.url+'</a></p>'; }
+    h += '</article>';
+  }
+  document.getElementById("songs").innerHTML = h;
+})();
+
+/* ---------- 情緒曲線 ---------- */
+var PAD_L=40, PAD_R=60, W=700, TOP=42, BOT=180;
+function xOf(k){ var mid = starts[k] + SONGS[k].mins/2; return PAD_L + (W-PAD_L-PAD_R)*(mid/TOTAL); }
+function yOf(t){ return BOT - (t-30)/70*(BOT-TOP); }
+function smooth(pts){
+  if(pts.length<2){ return ""; }
+  var d = "M"+pts[0][0]+","+pts[0][1], j;
+  for(j=0;j<pts.length-1;j++){
+    var p0 = pts[j===0?0:j-1], p1 = pts[j], p2 = pts[j+1], p3 = pts[j+2>pts.length-1?pts.length-1:j+2];
+    var c1x = p1[0] + (p2[0]-p0[0])/6, c1y = p1[1] + (p2[1]-p0[1])/6;
+    var c2x = p2[0] - (p3[0]-p1[0])/6, c2y = p2[1] - (p3[1]-p1[1])/6;
+    d += " C"+c1x.toFixed(1)+","+c1y.toFixed(1)+" "+c2x.toFixed(1)+","+c2y.toFixed(1)+" "+p2[0].toFixed(1)+","+p2[1].toFixed(1);
+  }
+  return d;
+}
+(function buildArc(){
+  var pts=[], k;
+  for(k=0;k<SONGS.length;k++){ pts.push([xOf(k), yOf(SONGS[k].tension)]); }
+  var path = smooth(pts);
+  var g = '';
+  g += '<defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="0">';
+  g += '<stop offset="0%" stop-color="#8fa9d4"/><stop offset="62%" stop-color="#e8a33d"/><stop offset="100%" stop-color="#7fc4a8"/>';
+  g += '</linearGradient></defs>';
+  g += '<line x1="'+PAD_L+'" y1="196" x2="'+(W-PAD_R)+'" y2="196" stroke="rgba(246,241,232,.18)" stroke-width="1"/>';
+  g += '<text x="'+PAD_L+'" y="214" class="lbl" style="font-size:10px;fill:rgba(246,241,232,.45)">0 分</text>';
+  g += '<text x="'+(W-PAD_R)+'" y="214" text-anchor="end" class="lbl" style="font-size:10px;fill:rgba(246,241,232,.45)">'+TOTAL+' 分</text>';
+  g += '<path d="'+path+'" fill="none" stroke="url(#ag)" stroke-width="3" stroke-linecap="round"/>';
+  for(k=0;k<SONGS.length;k++){
+    var x = xOf(k), y = yOf(SONGS[k].tension);
+    g += '<g class="node" data-k="'+k+'" tabindex="0" role="button" aria-label="第'+(k+1)+'首 '+SONGS[k].title+'">';
+    g += '<line x1="'+x+'" y1="'+(y+8)+'" x2="'+x+'" y2="196" stroke="rgba(246,241,232,.16)" stroke-width="1" stroke-dasharray="2 3"/>';
+    g += '<circle class="dot" cx="'+x+'" cy="'+y+'" r="7" fill="#8fa9d4"/>';
+    g += '<text class="stage" x="'+x+'" y="'+(y-16)+'" text-anchor="middle">'+SONGS[k].stage+'</text>';
+    g += '<text class="lbl" x="'+x+'" y="212" text-anchor="middle">'+(SONGS[k].encore?"EC":(k+1))+'</text>';
+    g += '<circle class="hit" cx="'+x+'" cy="'+((y+196)/2)+'" r="26"/>';
+    g += '</g>';
+  }
+  g += '<g id="marker"><line x1="0" y1="30" x2="0" y2="200" stroke="#e8a33d" stroke-width="2"/>';
+  g += '<circle cx="0" cy="26" r="4" fill="#e8a33d"/></g>';
+  document.getElementById("arc").innerHTML = g;
+})();
+document.getElementById("arc").addEventListener("click", function(e){
+  var n = e.target.closest(".node"); if(!n){ return; }
+  var el = document.getElementById("song-"+n.getAttribute("data-k"));
+  if(el){ el.scrollIntoView({behavior:"smooth", block:"start"}); }
+});
+document.getElementById("arc").addEventListener("keydown", function(e){
+  if(e.key!=="Enter" && e.key!==" "){ return; }
+  var n = e.target.closest(".node"); if(!n){ return; }
+  e.preventDefault();
+  var el = document.getElementById("song-"+n.getAttribute("data-k"));
+  if(el){ el.scrollIntoView({behavior:"smooth", block:"start"}); }
+});
+
+/* ---------- 語言比重條 ---------- */
+(function langbar(){
+  var h="", k;
+  for(k=0;k<SONGS.length;k++){
+    var pct = (SONGS[k].mins/TOTAL*100).toFixed(2);
+    h += '<span style="width:'+pct+'%;background:'+LANGCOLOR[SONGS[k].langKey]+'" title="'+SONGS[k].title+'">'+SONGS[k].lang.charAt(0)+'</span>';
+  }
+  document.getElementById("langbar").innerHTML = h;
+})();
+
+/* ---------- 計時器 ---------- */
+var t0 = null, paused = 0, tick = null, running = false;
+var clockEl = document.getElementById("clock");
+var infoEl = document.getElementById("tinfo");
+var barEl = document.getElementById("tbar");
+var startBtn = document.getElementById("startBtn");
+var markerEl = document.getElementById("marker");
+
+function currentIndex(sec){
+  var m = sec/60, k;
+  for(k=SONGS.length-1;k>=0;k--){ if(m >= starts[k]){ return k; } }
+  return 0;
+}
+function paint(sec){
+  clockEl.textContent = mmss(sec);
+  var k = currentIndex(sec);
+  var into = sec - starts[k]*60;
+  var left = SONGS[k].mins*60 - into;
+  var over = left < 0;
+  infoEl.classList.toggle("over", over);
+  var label = SONGS[k].encore ? ('安可曲 · '+SONGS[k].title) : ('第 '+(k+1)+' 首 · '+SONGS[k].title);
+  var msg = '目前應在 <b>'+label+'</b>　';
+  msg += over ? ('已超出 <b>'+mmss(-left)+'</b>') : ('剩 <b>'+mmss(left)+'</b>');
+  if(sec >= TOTAL*60){ msg = '<b>已達 '+TOTAL+' 分鐘</b>　流程走完了。'; }
+  infoEl.innerHTML = msg + '<span class="tbar"><i id="tbar"></i></span>';
+  barEl = document.getElementById("tbar");
+  barEl.style.width = Math.min(100, sec/(TOTAL*60)*100) + "%";
+
+  var cards = document.querySelectorAll(".song"), j;
+  for(j=0;j<cards.length;j++){ cards[j].classList.toggle("live", j===k && sec < TOTAL*60); }
+  var nodes = document.querySelectorAll("#arc .node");
+  for(j=0;j<nodes.length;j++){ nodes[j].classList.toggle("live", j===k && sec < TOTAL*60); }
+
+  var x = PAD_L + (W-PAD_L-PAD_R)*Math.min(1, sec/(TOTAL*60));
+  markerEl.classList.add("on");
+  markerEl.setAttribute("transform","translate("+x.toFixed(1)+",0)");
+}
+function loop(){
+  if(!running){ return; }
+  paint((Date.now()-t0)/1000 + paused);
+}
+startBtn.addEventListener("click", function(){
+  if(!running){
+    t0 = Date.now(); running = true;
+    startBtn.textContent = "暫停";
+    tick = setInterval(loop, 500);
+    loop();
+  }else{
+    paused += (Date.now()-t0)/1000; running = false;
+    clearInterval(tick); tick = null;
+    startBtn.textContent = "繼續";
+  }
+});
+document.getElementById("resetBtn").addEventListener("click", function(){
+  running = false; paused = 0; t0 = null;
+  if(tick){ clearInterval(tick); tick = null; }
+  startBtn.textContent = "開始演出";
+  clockEl.textContent = "00:00";
+  infoEl.classList.remove("over");
+  infoEl.innerHTML = '尚未開始。按「開始演出」後，會依流程表推算目前應該在第幾首。<span class="tbar"><i id="tbar"></i></span>';
+  barEl = document.getElementById("tbar");
+  markerEl.classList.remove("on");
+  var cards = document.querySelectorAll(".song"), nodes = document.querySelectorAll("#arc .node"), j;
+  for(j=0;j<cards.length;j++){ cards[j].classList.remove("live"); }
+  for(j=0;j<nodes.length;j++){ nodes[j].classList.remove("live"); }
+});
+
+/* ---------- 提詞卡 ---------- */
+var cue = document.getElementById("cue");
+var cueIdx = 0, cueSize = 1.5;
+function openCue(k){
+  cueIdx = Math.max(0, Math.min(SONGS.length-1, k));
+  document.getElementById("cueTitle").textContent = (cueIdx+1)+". "+SONGS[cueIdx].title;
+  document.getElementById("cueText").textContent = SONGS[cueIdx].script;
+  document.getElementById("cuePos").textContent = (cueIdx+1)+" / "+SONGS.length;
+  cue.classList.add("on");
+  document.body.style.overflow = "hidden";
+}
+function closeCue(){ cue.classList.remove("on"); document.body.style.overflow = ""; }
+var toast = document.createElement("div");
+toast.className = "toast"; document.body.appendChild(toast);
+var toastT = null;
+function flash(msg){
+  toast.textContent = msg; toast.classList.add("on");
+  if(toastT){ clearTimeout(toastT); }
+  toastT = setTimeout(function(){ toast.classList.remove("on"); }, 2200);
+}
+function copyText(txt, okMsg){
+  var done = false;
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt); done = true;
+    }
+  }catch(err){}
+  if(!done){
+    try{
+      var ta = document.createElement("textarea");
+      ta.value = txt; ta.setAttribute("readonly","");
+      ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      done = document.execCommand("copy");
+      document.body.removeChild(ta);
+    }catch(err2){}
+  }
+  flash(done ? okMsg : "無法自動複製，請長按下方網址複製");
+}
+document.getElementById("songs").addEventListener("click", function(e){
+  var cp = e.target.closest("[data-copy]");
+  if(cp){ copyText(cp.getAttribute("data-copy"), "已複製網址"); return; }
+
+  var lk = e.target.closest("a.btn.link");
+  if(lk){
+    var url = lk.getAttribute("data-url");
+    var w = null;
+    try{ w = window.open(url, "_blank", "noopener"); }catch(err){}
+    if(!w){
+      e.preventDefault();
+      copyText(url, "此處無法直接開啟，已複製網址");
+    }
+    return;
+  }
+
+  var b = e.target.closest("[data-cue]"); if(!b){ return; }
+  openCue(+b.getAttribute("data-cue"));
+});
+document.getElementById("cueClose").addEventListener("click", closeCue);
+document.getElementById("cuePrev").addEventListener("click", function(){ openCue(cueIdx-1); });
+document.getElementById("cueNext").addEventListener("click", function(){ openCue(cueIdx+1); });
+function setSize(v){
+  cueSize = Math.max(1, Math.min(3.2, v));
+  document.documentElement.style.setProperty("--cue-size", cueSize.toFixed(2)+"rem");
+  try{ LS.setItem("setlist_cuesize", cueSize); }catch(e){}
+}
+document.getElementById("cueBigger").addEventListener("click", function(){ setSize(cueSize+0.2); });
+document.getElementById("cueSmaller").addEventListener("click", function(){ setSize(cueSize-0.2); });
+(function(){ var v = parseFloat(LS.getItem("setlist_cuesize")); if(v){ setSize(v); } else { setSize(1.5); } })();
+document.addEventListener("keydown", function(e){
+  if(!cue.classList.contains("on")){ return; }
+  if(e.key==="Escape"){ closeCue(); }
+  if(e.key==="ArrowRight"){ openCue(cueIdx+1); }
+  if(e.key==="ArrowLeft"){ openCue(cueIdx-1); }
+});
+
+/* ---------- 檢查清單 ---------- */
+var CHECKS = [
+ "音響試音：確認麥克風音量與回音",
+ "伴奏檔／樂譜依演出順序排好，檔名前加 1–6",
+ "第 3、5 首的中文與台語咬字各過一遍",
+ "第 4 首的四種香草發音確認：thyme 唸 /taɪm/",
+ "六段引言至少默唸一次，抓好每段約 40–60 秒",
+ "台上放一杯常溫水，第 4 首結束後補水",
+ "手機／提詞卡調到適當字級並關閉自動鎖屏",
+ "備好結尾的三秒停頓，再道謝下台",
+ "安可曲伴奏單獨備一軌，掌聲漸息前就要能按下播放",
+ "法語鼻母音與連音過一遍，特別是 aux Champs-Élysées 的連接處",
+ "安可曲的拍手邀請：手勢與開口的那一句先決定好"
+];
+(function buildChecks(){
+  var h="", k;
+  for(k=0;k<CHECKS.length;k++){
+    var saved = LS.getItem("setlist_chk_"+k)==="1";
+    h += '<div class="check'+(saved?" done":"")+'"><input type="checkbox" id="chk'+k+'" data-k="'+k+'"'+(saved?" checked":"")+'>';
+    h += '<label for="chk'+k+'">'+CHECKS[k]+'</label></div>';
+  }
+  document.getElementById("checklist").innerHTML = h;
+})();
+document.getElementById("checklist").addEventListener("change", function(e){
+  var box = e.target; if(box.type!=="checkbox"){ return; }
+  box.closest(".check").classList.toggle("done", box.checked);
+  try{ LS.setItem("setlist_chk_"+box.getAttribute("data-k"), box.checked?"1":"0"); }catch(err){}
+});
+document.getElementById("clearCheck").addEventListener("click", function(){
+  var boxes = document.querySelectorAll("#checklist input"), k;
+  for(k=0;k<boxes.length;k++){
+    boxes[k].checked = false;
+    boxes[k].closest(".check").classList.remove("done");
+    try{ LS.removeItem("setlist_chk_"+k); }catch(e){}
+  }
+});
+
+})();
+</script>
+</body>
+</html>
